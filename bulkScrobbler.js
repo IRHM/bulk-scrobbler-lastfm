@@ -98,8 +98,8 @@ async function getTracksToScrobble(file) {
     }
   }
 
-  let scrobbleTime = Math.floor(Date.now() / 1000 - tracks.length * 2);
-  console.log(scrobbleTime);
+  let scrobbleTime = Math.floor(Date.now() / 1000 - tracks.length);
+  console.log("Starting scrobble time:", new Date(scrobbleTime * 1000));
 
   tracks.map((v) => {
     if (!v.artistName || !v.albumName || !v.trackName) {
@@ -110,7 +110,7 @@ async function getTracksToScrobble(file) {
     v.artist = v.artistName;
     v.album = v.albumName;
     v.track = v.trackName;
-    scrobbleTime = scrobbleTime + 2;
+    scrobbleTime = scrobbleTime + 1;
     v.timestamp = Math.floor(scrobbleTime);
 
     // Delete unneeded keys.
@@ -120,6 +120,7 @@ async function getTracksToScrobble(file) {
     v.time ? delete v.time : undefined;
   });
 
+  console.log("Last scrobble time:", new Date(scrobbleTime * 1000));
   return tracks;
 }
 
