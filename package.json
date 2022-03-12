@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "crypto-js": "^4.1.1",
+    "lastfm-node-client": "^2.2.0",
+    "open": "^8.4.0"
+  }
+}
